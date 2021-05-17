@@ -13,7 +13,14 @@ type Names = Vec<Name>;
 
 /// Will return the `Name` of the person who will drink the `n`-th cola.
 fn who_is_next(names: &Names, n: usize) -> Name {
-    todo!("Your code goes here!")
+    let mut double = 1;
+    let mut offset = 0;
+    while offset + 5 * double < n {
+        offset += 5 * double;
+        double *= 2;
+    }
+    let index = (n - offset - 1) / double;
+    *names.iter().nth(index).unwrap()
 }
 
 #[cfg(test)]
